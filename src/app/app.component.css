@@ -1,0 +1,5 @@
+.mat-tab-label:focus {
+    background-color: #FC6701;
+    font-size: 18px;
+    color: #333;
+}

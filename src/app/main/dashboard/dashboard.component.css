@@ -1,0 +1,60 @@
+/* Navigation-Bar Style stsrt */
+body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+.media-body span {
+  font-size: 10px;
+  color: #333;
+}
+.media-body p {
+  color: #333;
+  line-height: 15px;
+  font-weight: 600;
+}
+.media-text-right {
+  text-align: right;
+}
+.bg-white .card {
+  box-shadow: none;
+}
+.mega-dropdown .nav-accordion .card {
+  margin-bottom: 1px;
+}
+.mega-dropdown .nav-accordion .card-header {
+  background: #ffffff;
+}
+.mega-dropdown .nav-accordion .card-header h5 {
+  margin: 0;
+}
+.mega-dropdown .nav-accordion .card-header h5 a {
+  text-decoration: none;
+  color: #67757c;
+}
+.card-group .card:first-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.03);
+}
+.card-group .card:not(:first-child):not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.03);
+}
+.card {
+  margin-bottom: 30px;
+}
+.card {
+  background: #ffffff none repeat scroll 0 0;
+  cursor: pointer;
+  margin: 15px 0;
+  padding: 20px;
+  border: 0 solid #e7e7e7;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  font-family: 'Montserrat', sans-serif;
+}
+@media (max-width: 768px) {
+  .card {
+    display: inline-block;
+    width: 100%;
+  }
+}
+/* /////////////////////////////// */
+

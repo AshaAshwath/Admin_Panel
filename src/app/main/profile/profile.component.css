@@ -1,0 +1,35 @@
+body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+form
+{
+  font-family: 'Montserrat', sans-serif;
+}
+.col-md-6.card {
+  padding-bottom: 10px;
+}
+.bg-primary {
+  color: #fff;
+  background-color: #FC6701;
+  width: 52%;
+  margin: 0px auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  border-radius: 12px;
+}
+.padding-Zero{
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #FFFFFF;
+}
+
+.row.rowheight
+{
+  padding:12px;
+}
+.labels {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FC6701;
+}

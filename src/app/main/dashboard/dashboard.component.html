@@ -1,0 +1,58 @@
+<div class="container-fluid" data-dismiss="modal">
+  <!-- HEADER START -->
+  <app-header></app-header>
+  <!-- HEADER END -->
+
+  <div class="row">
+    <div class="col-md-2">
+          <app-sidemenu></app-sidemenu>
+    </div>
+    <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-4">
+          <div class="card p-30" (click)="setcompleted();">
+              <div class="media">
+                  <div class="media-left meida media-middle">
+                      <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
+                  </div>
+                  <div class="media-body media-text-right">
+                      <h2>{{Counts}}</h2>
+                      <p class="m-b-0">Total Sales</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <div class="col-md-4">
+          <div class="card p-30" [routerLink]="['/customer']">
+              <div class="media">
+                  <div class="media-left meida media-middle">
+                      <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
+                  </div>
+                  <div class="media-body media-text-right">
+                      <h2>{{customer}}</h2>
+                      <p class="m-b-0">Total Customer</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card p-30" (click)="setPending();">
+              <div class="media">
+                  <div class="media-left meida media-middle">
+                      <span><i class="fa fa-user f-s-40 color-danger"></i></span>
+                  </div>
+                  <div class="media-body media-text-right">
+                      <h2>{{orders}}</h2>
+                      <p class="m-b-0">Pending orders</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+    </div>
+    
+    <app-totalsales></app-totalsales>
+  </div>
+</div>
+</div>

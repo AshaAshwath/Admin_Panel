@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <!-- HEADER START -->
+  <app-header></app-header>
+  <!-- HEADER END -->
+
+  <div class="row" >
+    
+     <!-- sidemenu Starts -->
+    <div class="col-md-2">
+          <app-sidemenu></app-sidemenu>
+    </div>
+     <!-- sidemenu Ends -->
+
+      <!-- Body Starts -->
+    <div class="col-md-10 padding-Zero " style=" margin-top: 0px;">
+
+        <div class="panel panel-success" style="margin-top: 15px;">
+
+            <div class="panel panel-heading" ><b>Contacts list</b> </div>
+                           
+              <div class="overflowTest">
+                  <table class="table  table-bordered  table-hover" >
+                      <thead>
+                        <tr>
+                          <th>Sl.No</th>
+                          <th>Contact ID</th>
+                          <th>Mobile Number</th>
+                          <th>Email Id</th>
+                          <th>Name</th>
+                          <th>Message</th>
+                          <th>Date</th>
+                        </tr> 
+                      </thead>
+                      <tr *ngFor="let item of orderlist   index as i" >
+                       <td>{{i+1}}</td>
+                       <td>{{item.user_id}}</td>
+                       <td>{{item.mobile}}</td>
+                       <td>{{item.email}}</td> 
+                       <td>{{item.username}}</td>
+                       <td>{{item.message}}</td>
+                       <td>{{item.created_at}}</td>
+                      </tr>
+                  </table>
+              </div>
+
+        </div>
+
+    </div>
+       <!-- Body Ends -->
+  </div>
+      <!-- container Ends -->
+</div>

@@ -1,0 +1,105 @@
+.body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+.dropdown, .dropup {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+.panel.panel-success {
+    font-family: 'Montserrat', sans-serif;
+}
+.padding-Zero {
+    padding-left: 0px;
+    text-transform: capitalize;
+    padding-right: 0px;
+    background-color: #FFFFFF;
+}
+
+/* START OF Header STYLE */
+
+.head-padding {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.body-subcat {
+    margin-left: 10px !important;
+}
+
+.labels {
+    padding-left: 36px;
+    padding-top: 10px;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+.star {
+    color: red;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.error {
+    padding: 5px;
+}
+
+nputbox {
+    margin-bottom: 5px;
+}
+
+.alert-danger {
+    color: #f1130f;
+    background-color: white;
+    border-color: #ffffff;
+}
+
+.alert {
+    margin-bottom: 1px;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.question-size {
+    color: #FC6701;
+    font-size: 65px;
+}
+
+.question-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.searchnotfound {
+    color: rgb(230, 74, 36);
+    width: 100%;
+    text-align: center;
+}
+
+.btn.focus,
+.btn:focus,
+.btn:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #FC6701;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 0.5em;
+    margin-bottom: 5px;
+}
+.panel-success>.panel-heading {
+    color: #5c5757;
+    background-color: #FC6701;
+    border-color: #FC6701;
+    font-family: 'Montserrat', sans-serif;
+}

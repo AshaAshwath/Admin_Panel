@@ -1,0 +1,306 @@
+<div class="container-fluid">
+
+    <!-- HEADER START -->
+    <app-header></app-header>
+    <!-- HEADER END -->
+
+    <div class="row">
+
+        <!-- sidemenu Starts -->
+        <div class="col-md-2">
+              <app-sidemenu></app-sidemenu>
+        </div>
+        <!-- sidemenu Ends -->
+
+        <!-- Body Starts -->
+        <div class="col-md-10 padding-Zero" style=" margin-top: 0px;">
+            <md-tab-group dynamicHeight=true>
+                
+                <!-- Viwe-Category-List Tab start -->
+                <md-tab label="View Category List">
+                    <div class="row head-padding" style="margin-top: 15px;">
+                        <div class="col-md-6">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" (input)="searchCategory()" [(ngModel)]="search" placeholder="Search" name="search">
+                                    <div class="input-group-btn">
+                                        <button (click)="searchCategory()" class="btn  customsuccess customsuccess" type="submit">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="dropdown"  style="float:right;">
+                                <button class="btn  customsuccess dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a (click)="getCatagoryByAscOrder()">A-Z</a>
+                                    </li>
+                                    <li>
+                                        <a (click)="getCatagoryByDescOrder()">Z-A</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divPrint" class="table-padding">
+                        <table class="table  table-bordered  table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th>Category Code</th>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+
+                            <tr *ngFor="let item of categoryList index as i ">
+                               <td>{{i+1}}</td>
+                                <td>{{item.cat_code}}</td>
+                                <td>{{item.cat_name}}</td>
+                                <td>{{item.cat_description}}</td>
+                                <td>{{item.cat_status}}</td>
+                                <td>
+                                    <button type="button" data-toggle="modal" data-target="#Categoryedit" (click)="categoryToEdit(item.cat_id)" class="btn customsuccess icon-color">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button type="button" data-toggle="modal" data-target="#myModal" (click)="categoryToDelete(item.cat_id)" class="btn customsuccess icon-color">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </md-tab>
+
+
+                <md-tab label="Add New Category">
+                    <div class="body-content">
+                        <div class="panel panel-success" style="margin-top: 15px;">
+                            <div class="panel panel-heading"><b>Add New Category</b> </div>
+
+                            <form #addnewcategoryForm="ngForm" (ngSubmit)="addnewcategoryForm.reset();">
+                                <div class="form-group body-subcat">
+
+                                    <div class="row">
+                                        <div class="col-md-4  ">
+                                            <label class=" labels">Category Code</label>
+                                            <span class="star">*</span>
+                                        </div>
+                                        <div class="col-md-6  ">
+                                            <input type="text" class="inputbox form-control" name="categoryCode" #categoryCode="ngModel" required [(ngModel)]="addnewcategory.categoryCode">
+                                            <div [hidden]="categoryCode.valid || categoryCode.untouched">
+                                                <div *ngIf="categoryCode.errors && categoryCode.errors.required" class="alert alert-danger error">
+                                                    Please Fill This Field.
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <label class=" labels">Category Name</label>
+                                            <span class="star">*</span>
+                                        </div>
+                                        <div class="col-md-6  ">
+                                            <input type="text" class="inputbox form-control" name="categoryName" #categoryName="ngModel" required pattern="[a-zA-Z ]*" [(ngModel)]="addnewcategory.categoryName">
+                                            <div [hidden]="categoryName.valid || categoryName.untouched">
+                                                <div *ngIf="categoryName.errors && categoryName.errors.required" class="alert alert-danger error">
+                                                    Please Fill This Field.
+                                                </div>
+                                                <div *ngIf="categoryName.errors && categoryName.errors.pattern" class="alert alert-danger error">
+                                                    Please enter a valid name.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class=" labels">Description</label>
+                                            <span class="star">*</span>
+                                        </div>
+
+                                        <div class="col-md-6  ">
+                                            <input type="text" class="inputbox form-control" name="description" #description="ngModel" required [(ngModel)]="addnewcategory.description">
+                                            <div [hidden]="description.valid || description.untouched">
+                                                <div *ngIf="description.errors && description.errors.required" class="alert alert-danger error">
+                                                    Please Fill This Field.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class=" labels">Status</label>
+                                        </div>
+                                        <div class="col-md-6  ">
+                                            <select class=" inputbox form-control" name="status" #status="ngModel" [(ngModel)]="addnewcategory.status">
+                                                <option value="Enable">Enable</option>
+                                                <option value="Disable">Disable</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="savebutton  col-md-6 col-md-offset-4">
+                                            <button type="button" [disabled]="!addnewcategoryForm.valid" (click)="addcategory();" class="btn  customsuccess">Add Category</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <!-- <button class="btn btn-default loginbutton" type="button" (click)="uploadFileServer();">Next</button> -->
+                </md-tab>
+
+            </md-tab-group>
+        </div>
+        <!-- Body Ends -->
+    </div>
+    <!-- container Ends -->
+</div>
+
+
+<!-- *************** Category Edit  pouup model form  start ****************** -->
+<div class="modal fade" id="Categoryedit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog  modal-lg" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="spancacel" aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title" id="myModalLabel">
+                    Update Category Here
+                </h3>
+            </div>
+            <div>
+
+                <form #editaddnewcategoryForm="ngForm">
+                    <div class="form-group body-subcat">
+
+                        <div class="row">
+                            <div class="col-md-4  ">
+                                <label class=" labels">Category Code </label>
+                                <span class="star">*</span>
+                            </div>
+                            <div class="col-md-6  ">
+                                <input type="text" class="inputbox form-control" name="ecategoryCode" #ecategoryCode="ngModel" required [(ngModel)]="categorydata.ecategoryCode">
+                                <div [hidden]="ecategoryCode.valid || ecategoryCode.untouched">
+                                    <div *ngIf="ecategoryCode.errors && ecategoryCode.errors.required" class="alert alert-danger error">
+                                        Please Fill This Field.
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class=" labels">Category Name</label>
+                                <span class="star">*</span>
+                            </div>
+                            <div class="col-md-6  ">
+                                <input type="text" class="inputbox form-control" name="ecategoryName" #ecategoryName="ngModel" required pattern="[a-zA-Z ]*" [(ngModel)]="categorydata.ecategoryName">
+                                <div [hidden]="ecategoryName.valid || ecategoryName.untouched">
+                                    <div *ngIf="ecategoryName.errors && ecategoryName.errors.required" class="alert alert-danger error">
+                                        Please Fill This Field.
+                                    </div>
+                                    <div *ngIf="ecategoryName.errors && ecategoryName.errors.pattern" class="alert alert-danger error">
+                                        Please enter a valid name.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4  ">
+                                <label class=" labels">Description</label>
+                                <span class="star">*</span>
+                            </div>
+
+                            <div class="col-md-6  ">
+                                <input type="text" class="inputbox form-control" name="edescription" #edescription="ngModel" required [(ngModel)]="categorydata.edescription">
+                                <div [hidden]="edescription.valid || edescription.untouched">
+                                    <div *ngIf="edescription.errors && edescription.errors.required" class="alert alert-danger error">
+                                        Please Fill This Field.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class=" labels">Status</label>
+                            </div>
+                            <div class="col-md-6  ">
+                                <select class=" inputbox form-control" name="estatus" #estatus="ngModel" [(ngModel)]="categorydata.estatus">
+                                    <option>Enable</option>
+                                    <option>Disable</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="savebutton  col-md-6 col-md-offset-4">
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" (click)="updateCategory()" [disabled]="!editaddnewcategoryForm.valid" class="btn  customsuccess">Update Category</button>
+                <button type="submit" data-dismiss="modal" class="btn  customsuccess">cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- *************** Category Edit  pouup model End ****************** -->
+
+
+
+
+
+<!-- ***************  CAT  pouup model form  start ****************** -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog  modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="spancacel" aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="myModalLabel">CONFIRM</h3>
+            </div>
+            <div>
+                <div class="row">
+                    <span class="col-md-2 col-md-offset-1 glyphicon glyphicon-question-sign question-size "></span>
+                    <p class="col-md-8 question-text">Are you Sure that you want to Delete category Permanently From category list?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn customsuccess icon-color" data-dismiss="modal" (click)="deletecategory()">Yes</button>
+                <button type="submit" data-dismiss="modal" class="btn  customsuccess icon-color">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- *************** CAT  pouup model End ****************** -->

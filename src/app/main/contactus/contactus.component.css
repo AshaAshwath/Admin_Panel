@@ -1,0 +1,57 @@
+.padding-Zero{
+    text-transform: capitalize;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #FFFFFF;
+}
+
+.h4, h4 {
+    font-size: 18px;
+    margin-top: 37px;
+    margin-left: 15px;
+}
+
+
+.labels{
+       padding-left: 20px;
+       padding-top: 10px;
+       text-transform: capitalize;
+}
+
+.star{
+    color: red;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.addbutton{
+    margin-top: 15PX;
+    margin-bottom: 15PX;
+    width: 100%;
+    color: white;
+    background-color: #F8831D;
+}
+.panel-default{
+   
+    width: 100;
+}
+.alert-danger {
+    color: #f1130f;
+    background-color: white;
+    border-color: #ffffff;
+}
+.overflowTest{
+        width: 100%;
+        text-transform: capitalize;
+        overflow: scroll;
+    }
+    .btn.focus, .btn:focus, .btn:hover {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+    }
+    .panel-success>.panel-heading {
+        color: #d6e9c6;
+        background-color: #FC6701;
+        border-color: #FC6701;
+        font-family: 'Montserrat', sans-serif;
+    }

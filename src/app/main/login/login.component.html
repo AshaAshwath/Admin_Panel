@@ -1,0 +1,79 @@
+<div  class=" bgimg">
+    <div class="container-fluid bgimg">
+        <div class="row head-main" >
+            <div class="col-md-4">
+                <img class="logoimg" src="http://www.schoolsgottalent.in/ariant/public/images/Ariantlogo.jpg"  >
+              </div>
+            <div class="col-md-8">
+                <span class="titleee"></span>
+              </div>
+          </div>
+    <!-- container START -->
+   
+    <!-- HEADER START -->
+    <div class="row" style="background-color: #FC6701;">
+      <div class="col-md-11" >
+      </div>
+      <div class="col-md-1" >
+      </div>
+      </div>
+         <!-- HEADER END -->
+         <!-- BODY START -->
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 " >
+            <div class="loginbody">
+              <form #loginForm="ngForm"  >
+                <div class="heading" > Log in to Admin Panel</div>
+               
+                <div class="row">
+                  <div class="col-md-6" >
+                    <div  class=" labels">
+                      User Name:
+                    </div>  
+                    <input type="text" class="form-control inputbox" name="username" #username="ngModel" required [(ngModel)]="login.username" autocomplete="off">  
+                    <div [hidden]="username.valid || username.untouched">
+                      <div *ngIf="username.errors && username.errors.required" class="alert alert-danger error">
+                        Please enter a valid Username.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6" >
+                    <div class=" labels" >
+                      Password:
+                    </div>   
+                    <input  type="password" class="form-control inputbox" name="password" #password="ngModel"  required [(ngModel)]="login.password">  
+                    <div [hidden]="password.valid || password.untouched">
+                      <div *ngIf="password.errors && password.errors.required" class="alert alert-danger error">
+                        Please enter a valid Password.
+                      </div>
+                    </div>
+                  </div>          
+                </div>
+                <span class="errormessage">{{errormessage}}</span>
+                <div class="row forgettext">
+                  <div class="col-md-7" >
+                    <button (click)="doLogin();" type="submit" class="btn btn-default loginbutton" [disabled]="!loginForm.valid">login</button>
+                    <!-- <a class="btn btn-default loginbutton">Cancel</a> -->
+                  </div>  
+                  <div class="col-md-5" >
+                    <a class="forgotheading" [routerLink]="['/forgotpassword']">Forgot password?</a>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+         
+
+        </div>
+         <!-- BODY end -->
+                </div>
+                <div *ngIf="loader" class="overlay-loader">  
+                  <div class="loader-gif">
+                    <img src="http://www.schoolsgottalent.in/ariant/public/images/loader1.gif" alt="Loading...">
+ 
+                    <div class="loadingtext">Loading...</div>
+                  </div>
+                </div>
+      <!-- container end -->
+    </div>

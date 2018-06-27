@@ -1,0 +1,115 @@
+body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+.padding-Zero{
+    text-transform: capitalize;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #FFFFFF;
+}
+table
+{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+.pintype
+{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #5c5757;
+}
+.head-padding{
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.rowheight{
+    margin-top: 10px;
+}
+
+.h4, h4 {
+    font-size: 18px;
+    margin-top: 37px;
+    margin-left: 15px;
+}
+.col-md-offset-1 {
+    margin-left: 8.33333333%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.labels{
+       padding-left: 36px;
+       padding-top: 10px;
+       text-transform: capitalize;
+       font-family: 'Montserrat', sans-serif;
+}
+.star{
+    color: red;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.addbutton{
+    margin-top: 15PX;
+    margin-bottom: 15PX;
+    width: 100%;
+    color: white;
+    background-color: #F8831D;
+}
+.error{
+    padding: 5px;
+}
+.panel-default{
+   
+    width: 100;
+}
+
+.inputbox 
+{
+    margin-bottom: 5px;
+}
+.alert-danger {
+    color: #f1130f;
+    background-color: white;
+    border-color: #ffffff;
+}
+.alert {
+      margin-bottom: 1px;
+    border: 0px;
+    border-radius: 0px;
+}
+.overflowTest{
+        width: 100%;
+        text-transform: capitalize;
+        overflow: scroll;
+    }
+    .question-size{
+        color: #FC6701;
+       font-size: 65px;
+    }
+    .question-text{
+        text-align: center;
+        margin-top: 20px;
+    }
+      .btn.focus, .btn:focus, .btn:hover {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+    }
+    .mat-ink-bar {
+        background-color: #FC6701;
+    }
+    .panel-success>.panel-heading {
+        color: #5c5757;
+        background-color: #FC6701;
+        border-color: #FC6701;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+    }
+    .previewImg {
+        height: 40px;
+        width: 50px;
+    }
+    

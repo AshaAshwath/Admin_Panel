@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="input-group">
+        <input type="text" class="form-control" (input)="searchOrder()" [(ngModel)]="search" placeholder="Search" name="search">
+        <div class="input-group-btn">
+          <button (click)="searchOrder()" class="btn  customsuccess customsuccess" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+  <div class="col-md-1">
+    <label class="labels" style="padding-left: 15px;">From</label>
+    </div>
+<div class="col-md-3 labellcs">
+       <input type="date"  name="sdate" #sdate="ngModel"   [(ngModel)]="vieworder.sdate" class="form-control">
+   </div>
+   <div class="col-md-1">
+      <label class="labels">To</label>
+    </div>
+    <div class="col-md-3 labellcs">
+      <input type="date" name="edate" #edate="ngModel"   [(ngModel)]="vieworder.edate" class="form-control">
+  </div>
+  <div class="col-md-2">
+    <button class="btn customsuccess" (click)="getordersbydate()">dateby</button>
+  </div>
+  <div class="col-md-2">
+  <div class="dropdown">
+    <button class="btn customsuccess dropdown-toggle" type="button" data-toggle="dropdown">Filter By
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+     <li><a (click)="getOrdersByAscOrder()">A-Z</a></li> 
+      <li><a (click)="getOrdersByDescOrder()">Z-A</a></li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1">Status </a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" (click)="getOrdersBypendingOrder()">Pending</a></li>
+          <li><a tabindex="-1" (click)="getOrdersByverifiedOrder()">Verified</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+</div> 
+</div>     
+<br>
+              <div class="overflowTest">
+                <table class="table  table-bordered  table-hover" >
+                    <thead>
+                        <tr>
+                          <th>Sl.No</th>
+                          <th>Order ID</th>
+                          <th>Order Date</th>
+                          <th>Customer ID</th>
+                          <th>Customer Name</th>
+                          <th>Total Items</th>
+                          <th>Total Amount</th>
+                          <th>City</th>
+                          <th>Status</th>
+                        </tr> 
+                      </thead>
+                      <tr *ngFor="let item of orderlist   index as i" >
+                       <td>{{i+1}}</td>
+                       <td>{{item.payment_id}}</td>
+                       <td>{{item.payment_date}}</td>
+                       <td>{{item.user_id}}</td> 
+                       <td>{{item.username}}</td>
+                       <td>{{item.total_items}}</td>
+                       <td>{{item.grand_total}}</td>
+                       <td>{{item.city}}</td>
+                       <td>{{item.status}}</td>
+                      </tr>
+                    </table>
+              </div>

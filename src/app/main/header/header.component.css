@@ -1,0 +1,30 @@
+.head-main{
+    /* position:fixed; */
+    background-color:#FC6701;
+    margin-bottom: 24px;
+    /* #DFF0D8 */
+    /* width: 100%; */
+}
+.logoimg{
+    height: 60px;
+    width: 200px;
+    margin: 4px;
+    }
+    .logoname {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(252, 252, 252);
+    }
+    .btn.focus, .btn:focus, .btn:hover {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+    }
+
+        .title{
+        font-size: 45px;
+        font-weight: 600;
+        color: rgb(252, 252, 252);
+        /* text-align: center; */
+        margin-left: 10%;
+        /* font-family: 'Varela Round', sans-serif; */
+        }

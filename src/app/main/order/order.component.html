@@ -1,0 +1,249 @@
+<div class="container-fluid">
+  <!-- HEADER START -->
+  <app-header></app-header>
+  <!-- HEADER END -->
+
+  <div class="row" >
+         <!-- sidemenu Starts -->
+    <div class="col-md-2">
+              <app-sidemenu></app-sidemenu>
+    </div>
+     <!-- sidemenu Ends -->
+      <!-- Body Starts -->
+    <div class="col-md-10 padding-Zero " style=" margin-top: 0px;">
+        <div style="margin-top: 30px;">
+             
+              <div class="row head-padding">
+
+                  <div class="col-md-6 ">
+                    <form>
+                      <!-- /////////////// -->
+                      <div class="input-group">
+                          <input type="text" class="form-control" (input)="searchOrder()" [(ngModel)]="search" placeholder="Search" name="search">
+                          <div class="input-group-btn">
+                            <button (click)="searchOrder()" class="btn  customsuccess customsuccess" type="submit">
+                              <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                          </div>
+                        </div>
+                        
+                      <!-- ////////////// -->
+                    </form>
+                  </div>
+                
+                 <div class="col-md-6">
+                   <div class="row">
+                    <div class="col-md-8">
+                        <button class="btn customsuccess " (click)="Download()" style="float:right;">Export </button>
+                    </div>
+                    <div class="col-md-4"> 
+                    <div class="dropdown">
+                        <button class="btn customsuccess dropdown-toggle" type="button" data-toggle="dropdown">Filter By
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                         <li><a (click)="getOrdersByAscOrder()">A-Z</a></li> 
+                          <li><a (click)="getOrdersByDescOrder()">Z-A</a></li>
+                          <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">Status </a>
+                            <ul class="dropdown-menu">
+                              <li><a tabindex="-1" (click)="getOrdersBypendingOrder()">Pending</a></li>
+                              <li><a tabindex="-1" (click)="getOrdersByverifiedOrder()">Verified</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>        
+                    </div>
+                    </div>   
+                  </div>
+                </div>
+                    <div class="row">
+                      <div class="col-md-1">
+                        <label class="labels">From</label>
+                        </div>
+                    <div class="col-md-3 labellcs">
+                           <input type="date"  name="sdate" #sdate="ngModel"   [(ngModel)]="vieworder.sdate" class="form-control">
+                       </div>
+                       <div class="col-md-1">
+                          <label class="labels">To</label>
+                        </div>
+                        <div class="col-md-3 labellcs">
+                          <input type="date" name="edate" #edate="ngModel"   [(ngModel)]="vieworder.edate" class="form-control">
+                      </div>
+                      <div class="col-md-2">
+                        <button class="btn customsuccess" (click)="getordersbydate()">dateby</button>
+                      </div>
+                    </div>       
+               <br>
+              <div class="overflowTest">
+                <table class="table  table-bordered  table-hover" >
+                    <thead>
+                        <tr>
+                          <th>Sl.No</th>
+                          <th>Order ID</th>
+                          <th>Order Date</th>
+                          <th>Customer ID</th>
+                          <th>Customer Name</th>
+                          <th>Total Items</th>
+                          <th>Quantity</th>
+                          <th>Total Amount</th>
+                          <th>City</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr> 
+                      </thead>
+                      <tr *ngFor="let item of orderlist   index as i" >
+                       <td>{{i+1}}</td>
+                       <td>{{item.payment_id}}</td>
+                       <td>{{item.payment_date}}</td>
+                       <td>{{item.user_id}}</td> 
+                       <td>{{item.username}}</td>
+                       <td>{{item.total_items}}</td>
+                       <td>{{item.total_quantity}}</td>
+                       <td>{{item.grand_total}}</td>
+                       <td>{{item.city}}</td>
+                       <td>{{item.status}}</td>
+                       <td><button type="button" class="btn customsuccess icon-color" (click)="getorders(item.payment_id,item.payment_date)" data-toggle="modal" data-target="#view" > View</button>
+                       </td>
+                      </tr>
+                    </table>
+                  </div>
+          </div>
+      </div>
+       <!-- Body Ends -->
+      </div>
+      <!-- container Ends -->
+</div>
+
+<!-- ***************  view Order Pop Up model form  start ****************** -->
+<div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span class="spancacel" aria-hidden="true">&times;</span>
+            </button>
+            <h3 class="modal-title" id="myModalLabel">
+                 Orders Details
+            </h3>
+          </div>
+          <div style="margin-left: 10px;margin-right: 10px;">
+            <div class="row">
+                <div class="col-md-2">
+                  </div>
+              <div class="col-md-2">
+                Order ID:
+              </div>
+              <div class="col-md-2">
+                {{OrderID}}
+              </div>
+              <div class="col-md-2">
+                Order Date:
+              </div>
+              <div class="col-md-2">
+                {{OrderDate}}
+              </div>
+           
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                  </div>
+              <div class="col-md-2">
+                Customer Name:
+              </div>
+              <div class="col-md-2">
+               {{CustomerName}}
+              </div>
+              <div class="col-md-2">
+                Customer Code:
+              </div>
+              <div class="col-md-2">
+               {{CustomerCoder}}
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                  </div>
+            </div>
+            <hr/>
+    
+            <div class="row">
+                <div class="col-md-2">
+                  </div>
+              <div class="col-md-4">
+                Shipping Address
+                <div class="">
+                    {{ShippingAddress}}
+                </div>
+              </div>
+              <div class="col-md-4">
+              Billing Address
+              <div class="">
+                  {{BillingAddress}}
+              </div>
+              </div>
+             
+            </div>
+            <hr/>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Item Code</th>
+                    <th>Item Name</th>
+                    <th>UOM</th>
+                    <th>Quantity </th>
+                    <th>Amount </th>
+                    <!-- <th style="max-width:0px; width: 19px;">Action </th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let item of  orderByIdlist  index as i" >
+                        <td>{{item.product_code}}</td>
+                        <td>{{item.product_name}}</td>
+                        <td>{{item.uom}}</td>
+                        <td>{{item.product_quantity}} </td>
+                        <td>{{item.total_amount}}</td>
+                        <!-- <td>
+                          <button type="button"  (click)="conformdeleteitem()"  class="btn customsuccess icon-color">
+                            <span class="glyphicon glyphicon-trash"></span>
+                          </button></td> -->
+                     
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+    
+            </div>
+          <div class="modal-footer">
+            <button type="submit"  class="btn  customsuccess"  data-dismiss="modal" (click)="Dispachorder(OrderID)"  >Dispach</button>
+            <button type="submit" data-dismiss="modal"  class="btn  customsuccess" (click)="cancelled(OrderID)">Cancel</button>
+            <button type="submit" data-dismiss="modal"  class="btn  customsuccess" >close</button>   
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- *************** view order pouup model End ****************** -->
+
+     <!-- ***************  Delete  order model form    ****************** -->
+   
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog  modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="spancacel" aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">CONFIRM</h3>
+      </div>
+      <div>
+        <div class="row">
+          <span class="col-md-2 col-md-offset-1 glyphicon glyphicon-question-sign question-size "> </span> 
+          <span class="question-text"><h4>Are you sure that you want to delete this ?</h4></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="submit"  class="btn  customsuccess"  data-dismiss="modal"  (click)="deleteStore()" >Yes</button>
+          <button type="submit" data-dismiss="modal"  class="btn  customsuccess" >No</button>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- *************** Delete  pop up model form order End ****************** --> 
